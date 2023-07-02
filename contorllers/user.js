@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 
 import { sendCookie } from "../utils/fetures.js";
 import { isAuthenticated } from "../middlewares/auth.js";
+import Errorhandler from "../middlewares/error.js";
 
 export const getAllusers = async (req, res) => {
   const users = await User.find({});
@@ -35,7 +36,7 @@ try {
 };
 
 // login starts from hear...............
-export const login = async (req, res) => {
+export const login = async (req,res,next) => {
  try {
   const { email, password } = req.body;
 
