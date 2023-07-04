@@ -9,6 +9,14 @@ import cors from "cors";
 import { createProxyMiddleware } from 'http-proxy-middleware'
 
 export const app = express();
+app.use(
+  cors({
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type'],   
+    credentials: true,
+  })
+);
 const router = express.Router();
 app.use(express.json());
 app.use(cookieParser());
@@ -18,14 +26,7 @@ app.use("/api/v1/task", taskrouter);
  
 
  
-app.use(
-  cors({
-    origin: 'http://localhost:5173',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type'],   
-    credentials: true,
-  })
-);
+
 
 app.get("/", (req, res) => {
   res.send("welcome");
