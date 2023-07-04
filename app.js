@@ -16,10 +16,10 @@ app.use("/api/v1/users", userrouter);
 app.use("/api/v1/task", taskrouter);
 app.use(
   cors({
-    origin: ['http://localhost:5173'],
+    origin: 'http://localhost:5173',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type'],
     credentials: true,
-    allowedHeaders: ['application/json'], // Add the custom headers here
   })
 );
 
